@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DeviceTest {
-    Device device = new Device("test");
+    //Device device = new Device("test");
     @Test
     void isOn() {
         boolean result = device.isOn();

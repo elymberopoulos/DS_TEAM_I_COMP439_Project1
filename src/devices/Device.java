@@ -32,7 +32,6 @@ public class Device implements IDevice {
 
     @Override
     public void setOn() {
-
     }
 
     @Override

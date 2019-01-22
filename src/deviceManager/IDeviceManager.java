@@ -11,6 +11,6 @@ public interface IDeviceManager {
     public void showDevices();
     public void addDevice(String newKey, Device device, String targetCollection);
     public void removeDevice(String removeKey, Device device, String targetCollection);
-    public void updateDevice(String updateKey, Device device, String targetCollection);
+    public void updateDevice(String updateKey, String newName, String targetCollection);
     public void moveDevice(String moveKey, String targetCollection, String destinationCollection);
 }

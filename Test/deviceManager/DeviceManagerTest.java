@@ -45,5 +45,17 @@ class DeviceManagerTest {
 
     @Test
     void moveDevice() {
+        DeviceManager dm = new DeviceManager();
+        Map lights = dm.getDeviceMap().put("Lights", new TreeMap<>());
+        Map powerStrips = dm.getDeviceMap().put("Power Strips", new TreeMap<>());
+        Device d = new Device("light");
+
+        dm.addDevice("testKey", d, "Lights");
+        Device testResult = dm.getDeviceMap().get("Lights").get("testKey");
+        assertNotNull(testResult);
+
+        dm.moveDevice("testKey", "Lights", "Power Strips");
+        assertFalse(dm.getDeviceMap().get("Lights").containsKey("testKey"));
+        assertTrue(dm.getDeviceMap().get("Power Strips").containsKey("testKey"));
     }
 }

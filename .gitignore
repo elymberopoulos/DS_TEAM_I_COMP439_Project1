@@ -28,6 +28,7 @@ proguard/
 *.iws
 .idea/
 lib
+*out
 
 *.class
 

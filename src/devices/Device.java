@@ -1,12 +1,12 @@
 package devices;
 
-public class Device implements IDevice {
+public class Device implements IDevice, Runnable {
     private String deviceName;
-    private boolean deviceOn;
+    private boolean powerSwitch;
 
     public Device(String deviceName){
         this.deviceName = deviceName;
-        this.deviceOn = false;
+        this.powerSwitch = false;
     }
 
     public String getDeviceName() {
@@ -17,30 +17,28 @@ public class Device implements IDevice {
         this.deviceName = deviceName;
     }
 
+    public boolean powerSwitch() {
+        return powerSwitch;
+    }
+
+    public void setPowerSwitch() {
+        if(this.powerSwitch == true){
+            this.powerSwitch = false;
+        }
+        else{
+            System.out.println("Device already off.");
+        }
+    }
+
+    public void run() {
+
+    }
+
     public boolean isDeviceOn() {
-        return deviceOn;
+        return this.powerSwitch();
     }
 
-    public void setDeviceOn(boolean deviceOn) {
-        this.deviceOn = deviceOn;
-    }
-
-    @Override
-    public boolean isOn() {
-        return false;
-    }
-
-    @Override
-    public void setOn() {
-    }
-
-    @Override
-    public void moveDevice() {
-
-    }
-
-    @Override
-    public void setTimer() {
-
+    public String showState() {
+        return null;
     }
 }

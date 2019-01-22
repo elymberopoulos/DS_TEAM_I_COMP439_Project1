@@ -20,7 +20,7 @@ public class DeviceManager implements IDeviceManager {
     }
 
     public void showDevices(){
-        System.out.println("CURRENT DEVICES");
+        System.out.println("\t\t\t\tCURRENT DEVICES");
         System.out.println("_______________________________________________");
         for (String key : this.getDeviceMap().keySet()){
             System.out.println(key + " " + this.getDeviceMap().get(key));
@@ -44,13 +44,30 @@ public class DeviceManager implements IDeviceManager {
             }
         }
     }
+    public String getDeviceName(String key, String targetCollection){
+        for(Map.Entry<String, Map<String, Device>> entry : this.getDeviceMap().entrySet()){
+           if(entry.getKey() == targetCollection){
+               return entry.getValue().get(key).getDeviceName();
+           }
+        }
+        System.out.println("The device was not found.");
+        return null;
+    }
 
-    public void updateDevice(String updateKey, Device device, String targetCollection) {
+    public String setDeviceName(String key, String newName, String targetCollection){
+        for(Map.Entry<String, Map<String, Device>> entry : this.getDeviceMap().entrySet()){
+            if(entry.getKey() == targetCollection){
+                return entry.getValue().get(key).getDeviceName();
+            }
+        }
+        System.out.println("The device was not found.");
+        return null;
+    }
+
+    public void updateDevice(String updateKey, String newName, String targetCollection) {
         for(Map.Entry<String, Map<String, Device>> entry : this.getDeviceMap().entrySet()){
             if (entry.getKey() == targetCollection){
-                entry.getValue().forEach((key, value) -> {
-
-                });
+                entry.getValue().get(updateKey).setDeviceName(newName);
             }
         }
     }

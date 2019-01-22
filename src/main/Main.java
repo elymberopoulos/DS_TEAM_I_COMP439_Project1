@@ -20,6 +20,7 @@ public class Main {
         deviceManager.addDevice("lights", light, "Lights");
         deviceManager.addDevice("lighter", light2, "Lights");
         deviceManager.addDevice("power strip", powerStrip, "Power Strips");
+        deviceManager.moveDevice("power strip", "Power Strips", "Lights");
 
         Scanner scanner = new Scanner(System.in);
         do {

@@ -8,19 +8,19 @@ class DeviceTest {
     Device device = new Device("test");
     @Test
     void isOn() {
-        boolean result = device.powerSwitch();
+        boolean result = device.isDeviceOn();
         assertFalse(result);
         device.setPowerSwitch();
-        assertTrue(device.powerSwitch());
+        assertTrue(device.isDeviceOn());
 
     }
 
     @Test
     void setOn() {
         Device d = new Device("test");
-        assertFalse(d.powerSwitch());
+        assertFalse(d.isDeviceOn());
         d.setPowerSwitch();
-        assertTrue(d.powerSwitch());
+        assertTrue(d.isDeviceOn());
     }
 
 

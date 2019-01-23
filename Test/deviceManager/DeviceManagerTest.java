@@ -11,10 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class DeviceManagerTest {
 
     @Test
-    void showDevices() {
-    }
-
-    @Test
     void addDevice() {
         DeviceManager dm = new DeviceManager();
 
@@ -57,5 +53,15 @@ class DeviceManagerTest {
         dm.moveDevice("testKey", "Lights", "Power Strips");
         assertFalse(dm.getDeviceMap().get("Lights").containsKey("testKey"));
         assertTrue(dm.getDeviceMap().get("Power Strips").containsKey("testKey"));
+    }
+
+    @Test
+    void setDeviceName(){
+
+    }
+
+    @Test
+    void getDeviceName(){
+
     }
 }

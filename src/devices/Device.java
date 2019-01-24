@@ -11,10 +11,16 @@ public class Device implements IDevice {
     public Device(String deviceName){
         this.deviceName = deviceName;
         this.powerSwitch = false;
-        this.timer = new Timer();
+        this.timer = new Timer(0);
     }
     public Timer getTimer(){
         return timer;
+    }
+    public boolean checkTimer(){
+        if(this.getTimer().isRunning()){
+            return true;
+        }
+        return false;
     }
 
     public void startTimer(){

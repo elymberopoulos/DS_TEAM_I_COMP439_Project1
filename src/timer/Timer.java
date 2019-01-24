@@ -1,37 +1,41 @@
 package timer;
 
 import java.util.Date;
-import java.util.Scanner;
 
 public class Timer implements ITimer {
 
     private int time;
+    private boolean running;
 
-    public Timer(){
-        this.time = 0;
+    public Timer(int time) {
+        this.time = time;
+        this.running = false;
     }
-    private Thread threadGenerator(){
-        return new Thread();
+
+    public boolean isRunning() {
+        return running;
     }
+
 
     public int completeTask() {
-        System.out.println("Please enter a timer time in seconds.");
-        Scanner scanner = new Scanner(System.in);
-        int timeInput = Integer.parseInt(scanner.nextLine());
-        int convertedTime = timeInput * 1000;
-        this.setTime(convertedTime);
-        return convertedTime;
+        return 0;
     }
 
     public void run() {
-        try{
-            System.out.println("Device timer started at:" + new Date());
-            Thread.sleep(this.completeTask());
-            System.out.println("Device timer finished at:" + new Date());
-        } catch (InterruptedException e){
+        System.out.println("Device timer started at:" + new Date());
+        try {
+            Thread.sleep(this.getTime());
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+        this.setTime(0);
+        this.running = false;
+        System.out.println("Device timer finished at:" + new Date());
+        try {
+            Thread.currentThread().join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public int getTime() {
@@ -39,6 +43,39 @@ public class Timer implements ITimer {
     }
 
     public void setTime(int time) {
-        this.time = time;
+        this.time = time * 1000;
     }
+
+//    public boolean timerAlarm(){
+//        if(this.getTime() == 0){
+//            return true;
+//        }
+//        return false;
+//    }
+
+//    public int completeTask() {
+//        if(this.getTime() == 0){
+//            System.out.println("NO TIMER VALUE");
+//            return 0;
+//        }
+//        this.running = true;
+//        return this.getTime();
+//    }
+//
+//    public void run() {
+//        try{
+//            System.out.println("Device timer started at:" + new Date());
+//            int time = this.completeTask();
+//            Thread.sleep(time);
+//            this.setTime(0);
+//            this.running = false;
+//            System.out.println("Device timer finished at:" + new Date());
+//        } catch (InterruptedException e){
+//            e.printStackTrace();
+//        }
+//
+//    }
+
+
+
 }

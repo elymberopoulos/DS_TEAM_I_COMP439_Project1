@@ -35,7 +35,7 @@ class DeviceManagerTest {
         Device testResult = dm.getDeviceMap().get("Lights").get("testKey");
         assertNotNull(testResult);
 
-        dm.removeDevice("testKey", d, "Lights");
+        dm.removeDevice("testKey", "Lights");
         assertTrue(!dm.getDeviceMap().get("Lights").containsKey("testKey"));
     }
 

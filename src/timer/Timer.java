@@ -1,21 +1,38 @@
 package timer;
 
+import devices.Device;
+
 import java.util.Date;
 
 public class Timer implements ITimer {
 
     private int time;
     private boolean running;
+    private Device attachedDevice;
 
-    public Timer(int time) {
+
+
+    public Timer(int time, Device attachedDevice) {
         this.time = time;
         this.running = false;
+        this.attachedDevice = attachedDevice;
     }
 
     public boolean isRunning() {
         return running;
     }
 
+    public int getTime() {
+        return time;
+    }
+
+    public Device getAttachedDevice() {
+        return attachedDevice;
+    }
+
+    public void setTime(int time) {
+        this.time = time * 1000;
+    }
 
     public int completeTask() {
         return 0;
@@ -23,6 +40,7 @@ public class Timer implements ITimer {
 
     public void run() {
         System.out.println("Device timer started at:" + new Date());
+        this.running = true;
         try {
             Thread.sleep(this.getTime());
         } catch (InterruptedException e) {
@@ -38,13 +56,7 @@ public class Timer implements ITimer {
         }
     }
 
-    public int getTime() {
-        return time;
-    }
 
-    public void setTime(int time) {
-        this.time = time * 1000;
-    }
 
 //    public boolean timerAlarm(){
 //        if(this.getTime() == 0){

@@ -24,7 +24,6 @@ public class DeviceManager implements IDeviceManager {
     }
 
     public Map<String, Map<String, Device>> getDeviceMap() {
-
         return deviceMap;
     }
 
@@ -41,6 +40,7 @@ public class DeviceManager implements IDeviceManager {
     public void addDevice(String newKey, Device device, String targetCollection) {
         for (Map.Entry<String, Map<String, Device>> entry : this.getDeviceMap().entrySet()) {
             if (entry.getKey().equalsIgnoreCase(targetCollection) && !entry.getValue().containsKey(newKey)) {
+                device.setDeviceName(newKey);
                 entry.getValue().put(newKey, device);
             }
         }
@@ -75,11 +75,11 @@ public class DeviceManager implements IDeviceManager {
 
 
     public Device getDevice(String key, String targetCollection) {
-        for (Map.Entry<String, Map<String, Device>> entry : this.getDeviceMap().entrySet()) {
-            if (entry.getKey().equalsIgnoreCase(targetCollection) && entry.getValue().containsKey(key)) {
-                return entry.getValue().get(key);
+            for (Map.Entry<String, Map<String, Device>> entry : this.getDeviceMap().entrySet()) {
+                if (entry.getKey().equalsIgnoreCase(targetCollection) && entry.getValue().containsKey(key)) {
+                    return entry.getValue().get(key);
+                }
             }
-        }
         return null;
     }
 

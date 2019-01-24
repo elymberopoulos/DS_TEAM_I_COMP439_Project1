@@ -8,10 +8,10 @@ public class Device implements IDevice {
     private boolean powerSwitch;
     private Timer timer;
 
-    public Device(String deviceName){
-        this.deviceName = deviceName;
+    public Device(){
+        this.deviceName = null;
         this.powerSwitch = false;
-        this.timer = new Timer(0);
+        this.timer = new Timer(0 , this);
     }
     public Timer getTimer(){
         return timer;

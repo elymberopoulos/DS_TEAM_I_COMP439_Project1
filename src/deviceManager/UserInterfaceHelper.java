@@ -12,7 +12,7 @@ public class UserInterfaceHelper {
     public void help(){
         System.out.println("\t\t << This is the help menu >>");
         System.out.println("VALID COMMANDS:\n" +
-                "\tadd device, remove device, move device, update device\n" +
+                "\tadd device, remove device, move device, manage device\n" +
                 "\tshow devices, exit, help, cls");
     }
 }

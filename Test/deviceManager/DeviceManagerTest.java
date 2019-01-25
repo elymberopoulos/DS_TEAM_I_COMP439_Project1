@@ -16,7 +16,7 @@ class DeviceManagerTest {
 
         Map lights = dm.getDeviceMap().put("Lights", new TreeMap<>());
         Map powerStrips = dm.getDeviceMap().put("Power Strips", new TreeMap<>());
-        Device d = new Device("light");
+        Device d = new Device();
 
         dm.addDevice("testKey", d, "Lights");
         Device testResult = dm.getDeviceMap().get("Lights").get("testKey");
@@ -29,7 +29,7 @@ class DeviceManagerTest {
         DeviceManager dm = new DeviceManager();
         Map lights = dm.getDeviceMap().put("Lights", new TreeMap<>());
         Map powerStrips = dm.getDeviceMap().put("Power Strips", new TreeMap<>());
-        Device d = new Device("light");
+        Device d = new Device();
 
         dm.addDevice("testKey", d, "Lights");
         Device testResult = dm.getDeviceMap().get("Lights").get("testKey");
@@ -44,7 +44,7 @@ class DeviceManagerTest {
         DeviceManager dm = new DeviceManager();
         Map lights = dm.getDeviceMap().put("Lights", new TreeMap<>());
         Map powerStrips = dm.getDeviceMap().put("Power Strips", new TreeMap<>());
-        Device d = new Device("light");
+        Device d = new Device();
 
         dm.addDevice("testKey", d, "Lights");
         Device testResult = dm.getDeviceMap().get("Lights").get("testKey");

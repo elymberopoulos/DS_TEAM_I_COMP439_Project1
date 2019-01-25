@@ -4,8 +4,7 @@ public class SmartLight extends Device implements ISmartLight {
 
     private int brightness;
 
-    public SmartLight(String deviceName) {
-        super(deviceName);
+    public SmartLight() {
         this.brightness = 0;
     }
 

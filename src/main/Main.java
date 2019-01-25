@@ -7,14 +7,14 @@ import devices.SmartLight;
 import devices.SmartPowerStrip;
 import timer.Timer;
 
-import java.util.Map;
-import java.util.Scanner;
-import java.util.TreeMap;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 
 public class Main {
 
     public static void main(String[] args) {
+        SimpleDateFormat timeFormat = new SimpleDateFormat("YYYY:MM:DD:HH:MM:SS");
         ThreadGroup threadGroup = new ThreadGroup("timers");
         DeviceManager deviceManager = new DeviceManager();
         Map lights = deviceManager.getDeviceMap().put("lights", new TreeMap<>());
@@ -103,8 +103,8 @@ public class Main {
                             String manageKey = scanner.nextLine().toLowerCase();
                             System.out.print("Enter device collection:");
                             String manageCollection = scanner.nextLine().toLowerCase();
-                            Device manageDevice = deviceManager.getDevice(manageKey, manageCollection);
-                            if (manageDevice.getClass() != SmartLight.class){
+                            Device manageDevice = (SmartLight) deviceManager.getDevice(manageKey, manageCollection);
+                            if (manageDevice.getClass() != SmartLight.class) {
                                 System.out.println("Invalid device type");
                                 break;
                             }
@@ -113,14 +113,22 @@ public class Main {
                                 manageDevice.setPowerSwitch();
                                 System.out.println("The devices power is now " + manageDevice.isDeviceOn() + ".");
                             }
+                            System.out.println("Would you like to adjust the brightness? [y/n]");
+                            if (scanner.nextLine().equalsIgnoreCase("y")) {
+                                System.out.print("Select a value from 0 - 10:");
+                                int brightness = Integer.parseInt(scanner.nextLine().toLowerCase());
+                                ((SmartLight) manageDevice).setBrightness(brightness);
+                                System.out.println("The devices power is now " + manageDevice.isDeviceOn() + ".");
+                            }
                         }
+                        /////////////////////////////////////////////////////////////////////
                         if (manageInput.equalsIgnoreCase("set power strip power")) {
                             System.out.print("Enter device key:");
                             String manageKey = scanner.nextLine().toLowerCase();
                             System.out.print("Enter device collection:");
                             String manageCollection = scanner.nextLine().toLowerCase();
-                            Device manageDevice = deviceManager.getDevice(manageKey, manageCollection);
-                            if (manageDevice.getClass() != SmartPowerStrip.class){
+                            Device manageDevice = (SmartPowerStrip) deviceManager.getDevice(manageKey, manageCollection);
+                            if (manageDevice.getClass() != SmartPowerStrip.class) {
                                 System.out.println("Invalid device type");
                                 break;
                             }
@@ -129,6 +137,7 @@ public class Main {
                                 manageDevice.setPowerSwitch();
                                 System.out.println("The devices power is now " + manageDevice.isDeviceOn() + ".");
                             }
+
                         }
                     } catch (NullPointerException e) {
                         e.printStackTrace();
@@ -181,22 +190,41 @@ public class Main {
                     }
                     break;
 
-                case "set schedule":
-
+                case "set schedule": //LOGIC EXPLAINED: date objects created, one gets the desired start time in military time the other
+                    try {           //gets the time for now. Subtract current time from schedule start time and sleep thread for that amount of time (in milliseconds)
+                        System.out.print("<<<<<\t ENTER DEVICE INFORMATION\t>>>>>>\n" +
+                                "\tDEVICE KEY: ");
+                        String deviceKey = scanner.nextLine().toLowerCase();
+                        System.out.print("\tDEVICE COLLECTION NAME: ");
+                        String deviceCollection = scanner.nextLine().toLowerCase();
+                        Device targetDevice = deviceManager.getDevice(deviceKey, deviceCollection);
+                        Timer targetTimer = targetDevice.getTimer();
+                        System.out.println("Please enter a timer time in seconds.");
+                        int timeInput = Integer.parseInt(scanner.nextLine());
+                        targetTimer.setTime(timeInput);
+                        System.out.print("Enter in 24 hour (military) time when the device should start YYYY:MM:DD:HH:MM:SS: ");
+                        String scheduleEnd = (scanner.nextLine());
+                        Date currentTime = timeFormat.parse(scheduleEnd);
+                        long x = currentTime.getTime();
+                        Date scheduleStart = new Date();
+                        long y = scheduleStart.getTime();
+                        long scheduleTotalWaitTime = y - x;
+                        System.out.println(scheduleTotalWaitTime);
+                        targetTimer.setSchedule(scheduleTotalWaitTime);
+                        Thread scheduleThread = new Thread(targetTimer);
+                        scheduleThread.start();
+                    } catch (NullPointerException e) {
+                        e.printStackTrace();
+                        System.out.println("ERROR >> INVALID ENTRIES: " + e);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        System.out.println("ERROR: " + e);
+                    }
                     break;
-//                case "select device":
-//                    System.out.println("Supported devices: light and power strip");
-//                    System.out.println("Name the device");
-//                    String deviceName = scanner.nextLine();
-//                    System.out.println(deviceName);
-//                    if (deviceName.equalsIgnoreCase("light")) {
-//                        System.out.println("Light if statement");
-//                    }
-//                    if (deviceName.equalsIgnoreCase("power strip")) {
-//                        System.out.println("Power strip if statement");
-//                    }
-//                    break;
                 case "show devices":
+                    deviceManager.showDevices();
+                    break;
+                case "show device":
                     deviceManager.showDevices();
                     break;
                 case "cls":

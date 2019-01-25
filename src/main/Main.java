@@ -8,38 +8,22 @@ import devices.SmartPowerStrip;
 import timer.Timer;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoField;
 import java.util.*;
 
 
 public class Main {
 
     public static void main(String[] args) {
-        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:MM:SS");
+        SimpleDateFormat timeFormat = new SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy");
         ThreadGroup threadGroup = new ThreadGroup("timers");
         DeviceManager deviceManager = new DeviceManager();
         Map lights = deviceManager.getDeviceMap().put("lights", new TreeMap<>());
         Map powerStrips = deviceManager.getDeviceMap().put("power strips", new TreeMap<>());
         UserInterfaceHelper ui = new UserInterfaceHelper();
-//        //TESTING VALUES FOR DEVELOPER//
-
-//        Device light = new Device("ceiling lights");
-//        Device light2 = new Device("ceiling lights");
-//        Device powerStrip = new Device("power strip");
-//
-//        deviceManager.addDevice("lights", light, "lights");
-//        deviceManager.addDevice("lighter", light2, "lights");
-//        deviceManager.addDevice("power strip", powerStrip, "power strips");
-//        deviceManager.moveDevice("power strip", "power strips", "lights");
-//        deviceManager.moveDevice("lighter", "lights", "power strips");
-//
-//        System.out.println(deviceManager.getDeviceName("lights", "lights"));
-//        deviceManager.setDeviceName("lights", "Ceiling Lights", "lights");
-//        System.out.println(deviceManager.getDeviceName("lights", "lights"));
-//        System.out.println("TESTING LIGHT");
-//        SmartLight lightTest = new SmartLight("living room");
-//        deviceManager.addDevice("smartlight", lightTest, "lights");
-//        //light.startTimer();
-//        //END OF TESTING VALUES FOR DEVELOPER//
+        ////////////////////////////////////////////////////////////////////////////////////
         System.out.println("Please enter a command");
         Scanner scanner = new Scanner(System.in);
         do {
@@ -202,23 +186,21 @@ public class Main {
                         System.out.println("Please enter a timer time in seconds.");
                         int timeInput = Integer.parseInt(scanner.nextLine());
                         targetTimer.setTime(timeInput);
-                        System.out.print("Enter in 24 hour (military) time when the device should start YYYY:MM:DD:HH:MM:SS: ");
-                        String scheduleEnd = (scanner.nextLine());
-                        Date currentTime = timeFormat.parse(scheduleEnd);
-                        long x = currentTime.getTime();
-                        Date scheduleStart = new Date();
-                        long y = scheduleStart.getTime();
-                        long scheduleTotalWaitTime = y - x;
-                        System.out.println(scheduleTotalWaitTime);
-                        targetTimer.setSchedule(scheduleTotalWaitTime);
+                        System.out.println("Next input options are for a setting a schedule.");
+                        System.out.print("Start in how many HOURS: ");
+                        int hours = (Integer.parseInt(scanner.nextLine()));
+                        System.out.print("Start in how many MINUTES: ");
+                        int minutes = (Integer.parseInt(scanner.nextLine()));
+                        long startProduct = ((hours * 3600000) + (minutes * 60000));
+                        targetTimer.setSchedule(startProduct);
                         Thread scheduleThread = new Thread(targetTimer);
                         scheduleThread.start();
                     } catch (NullPointerException e) {
                         e.printStackTrace();
-                        System.out.println("ERROR >> INVALID ENTRIES: " + e);
+                        System.out.println("ERROR >> INVALID ENTRIES: " + e.toString());
                     } catch (Exception e) {
                         e.printStackTrace();
-                        System.out.println("ERROR: " + e);
+                        System.out.println("ERROR: " + e.toString());
                     }
                     break;
                 case "show devices":

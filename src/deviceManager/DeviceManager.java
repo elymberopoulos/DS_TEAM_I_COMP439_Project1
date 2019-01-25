@@ -9,12 +9,12 @@ import java.util.TreeMap;
 
 
 public class DeviceManager implements IDeviceManager {
-    private TreeMap<String, Map<String, Device>> deviceMap;
+    private TreeMap<String, TreeMap<String, Device>> deviceMap;
 
 
     public DeviceManager() {
         //this.deviceMap = new TreeMap<String, Map<String, Map<String, Device>>>();
-        this.deviceMap = new TreeMap<String, Map<String, Device>>();
+        this.deviceMap = new TreeMap<String, TreeMap<String, Device>>();
     }
 
     public SmartLight generateSmartBulb() {
@@ -25,7 +25,7 @@ public class DeviceManager implements IDeviceManager {
         return new SmartPowerStrip();
     }
 
-    public Map<String, Map<String, Device>> getDeviceMap() {
+    public TreeMap<String, TreeMap<String, Device>> getDeviceMap() {
         return deviceMap;
     }
 
@@ -40,7 +40,7 @@ public class DeviceManager implements IDeviceManager {
     }
 
     public void addDevice(String newKey, Device device, String targetCollection) {
-        for (Map.Entry<String, Map<String, Device>> entry : this.getDeviceMap().entrySet()) {
+        for (Map.Entry<String, TreeMap<String, Device>> entry : this.getDeviceMap().entrySet()) {
             if (entry.getKey().equalsIgnoreCase(targetCollection) && !entry.getValue().containsKey(newKey)) {
                 device.setDeviceName(newKey);
                 entry.getValue().put(newKey, device);
@@ -49,7 +49,7 @@ public class DeviceManager implements IDeviceManager {
     }
 
     public void removeDevice(String removeKey, String targetCollection) {
-        for (Map.Entry<String, Map<String, Device>> entry : this.getDeviceMap().entrySet()) {
+        for (Map.Entry<String, TreeMap<String, Device>> entry : this.getDeviceMap().entrySet()) {
             if (entry.getKey().equalsIgnoreCase(targetCollection) && entry.getValue().containsKey(removeKey)) {
                 entry.getValue().remove(removeKey);
             }
@@ -57,7 +57,7 @@ public class DeviceManager implements IDeviceManager {
     }
 
     public String getDeviceName(String key, String targetCollection) {
-        for (Map.Entry<String, Map<String, Device>> entry : this.getDeviceMap().entrySet()) {
+        for (Map.Entry<String, TreeMap<String, Device>> entry : this.getDeviceMap().entrySet()) {
             if (entry.getKey().equalsIgnoreCase(targetCollection) && entry.getValue().containsKey(key)) {
                 return entry.getValue().get(key).getDeviceName();
             }
@@ -67,7 +67,7 @@ public class DeviceManager implements IDeviceManager {
     }
 
     public void setDeviceName(String key, String newName, String targetCollection) {
-        for (Map.Entry<String, Map<String, Device>> entry : this.getDeviceMap().entrySet()) {
+        for (Map.Entry<String, TreeMap<String, Device>> entry : this.getDeviceMap().entrySet()) {
             if (entry.getKey().equalsIgnoreCase(targetCollection) && entry.getValue().containsKey(key)) {
                 entry.getValue().get(key).setDeviceName(newName);
                 System.out.println("The device name was changed to: " + newName);
@@ -77,7 +77,7 @@ public class DeviceManager implements IDeviceManager {
 
 
     public Device getDevice(String key, String targetCollection) {
-            for (Map.Entry<String, Map<String, Device>> entry : this.getDeviceMap().entrySet()) {
+            for (Map.Entry<String, TreeMap<String, Device>> entry : this.getDeviceMap().entrySet()) {
                 if (entry.getKey().equalsIgnoreCase(targetCollection) && entry.getValue().containsKey(key)) {
                     return entry.getValue().get(key);
                 }
@@ -86,7 +86,7 @@ public class DeviceManager implements IDeviceManager {
     }
 
     public void updateDevice(String updateKey, String newName, String targetCollection) {
-        for (Map.Entry<String, Map<String, Device>> entry : this.getDeviceMap().entrySet()) {
+        for (Map.Entry<String, TreeMap<String, Device>> entry : this.getDeviceMap().entrySet()) {
             if (entry.getKey().equalsIgnoreCase(targetCollection) && entry.getValue().containsKey(updateKey)) {
                 entry.getValue().get(updateKey).setDeviceName(newName);
             }
@@ -95,7 +95,7 @@ public class DeviceManager implements IDeviceManager {
 
     public void moveDevice(String moveKey, String targetCollection, String destinationCollection) {
         Device placeHolder;
-        for (Map.Entry<String, Map<String, Device>> entry : this.getDeviceMap().entrySet()) {
+        for (Map.Entry<String, TreeMap<String, Device>> entry : this.getDeviceMap().entrySet()) {
             if (entry.getKey().equalsIgnoreCase(targetCollection) && entry.getValue().containsKey(moveKey)) {
                 placeHolder = entry.getValue().remove(moveKey);
                 this.addDevice(moveKey, placeHolder, destinationCollection);

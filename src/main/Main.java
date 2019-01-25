@@ -14,7 +14,7 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        SimpleDateFormat timeFormat = new SimpleDateFormat("YYYY:MM:DD:HH:MM:SS");
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:MM:SS");
         ThreadGroup threadGroup = new ThreadGroup("timers");
         DeviceManager deviceManager = new DeviceManager();
         Map lights = deviceManager.getDeviceMap().put("lights", new TreeMap<>());
@@ -121,7 +121,7 @@ public class Main {
                                 System.out.println("The devices power is now " + manageDevice.isDeviceOn() + ".");
                             }
                         }
-                        /////////////////////////////////////////////////////////////////////
+                        ////////////////////////////POWER STRIP SECTION/////////////////////////////////////////
                         if (manageInput.equalsIgnoreCase("set power strip power")) {
                             System.out.print("Enter device key:");
                             String manageKey = scanner.nextLine().toLowerCase();

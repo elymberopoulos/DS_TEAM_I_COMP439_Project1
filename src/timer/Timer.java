@@ -47,6 +47,7 @@ public class Timer implements ITimer {
     }
 
     public void run() {
+        this.running = true;
         System.out.println("Schedule wait STARTED at: " + new Date());
         try{
             Thread.sleep(this.getSchedule());
@@ -57,6 +58,7 @@ public class Timer implements ITimer {
         }
         System.out.println("Device timer started at:" + new Date());
         this.running = true;
+
         try {
             Thread.sleep(this.getTime());
         } catch (InterruptedException e) {

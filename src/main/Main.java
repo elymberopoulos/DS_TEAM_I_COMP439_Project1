@@ -174,8 +174,8 @@ public class Main {
                     }
                     break;
 
-                case "set schedule": //LOGIC EXPLAINED: date objects created, one gets the desired start time in military time the other
-                    try {           //gets the time for now. Subtract current time from schedule start time and sleep thread for that amount of time (in milliseconds)
+                case "set schedule":
+                    try {
                         System.out.print("<<<<<\t ENTER DEVICE INFORMATION\t>>>>>>\n" +
                                 "\tDEVICE KEY: ");
                         String deviceKey = scanner.nextLine().toLowerCase();

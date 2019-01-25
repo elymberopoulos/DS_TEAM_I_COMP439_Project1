@@ -9,13 +9,21 @@ public class Timer implements ITimer {
     private int time;
     private boolean running;
     private Device attachedDevice;
-
+    private long schedule;
 
 
     public Timer(int time, Device attachedDevice) {
         this.time = time;
         this.running = false;
         this.attachedDevice = attachedDevice;
+        this.schedule = 0;
+    }
+    public long getSchedule(){
+        return this.schedule;
+    }
+
+    public void setSchedule(long waitTime){
+        this.schedule = waitTime;
     }
 
     public boolean isRunning() {
@@ -39,6 +47,14 @@ public class Timer implements ITimer {
     }
 
     public void run() {
+        System.out.println("Schedule wait STARTED at: " + new Date());
+        try{
+            Thread.sleep(this.getSchedule());
+            System.out.println("Schedule wait ENDED at: " + new Date());
+        }
+        catch (InterruptedException e){
+            e.printStackTrace();
+        }
         System.out.println("Device timer started at:" + new Date());
         this.running = true;
         try {
@@ -47,6 +63,7 @@ public class Timer implements ITimer {
             e.printStackTrace();
         }
         this.setTime(0);
+        this.setSchedule(0);
         this.running = false;
         System.out.println("Device timer finished at:" + new Date());
         try {

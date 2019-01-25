@@ -4,7 +4,9 @@ import devices.Device;
 import devices.SmartLight;
 import devices.SmartPowerStrip;
 
-import java.util.*;
+import java.util.Map;
+import java.util.TreeMap;
+
 
 public class DeviceManager implements IDeviceManager {
     private TreeMap<String, Map<String, Device>> deviceMap;
@@ -16,11 +18,11 @@ public class DeviceManager implements IDeviceManager {
     }
 
     public SmartLight generateSmartBulb() {
-        return new SmartLight("default smart light");
+        return new SmartLight();
     }
 
     public SmartPowerStrip generateSmartPowerStrip() {
-        return new SmartPowerStrip("default power strip");
+        return new SmartPowerStrip();
     }
 
     public Map<String, Map<String, Device>> getDeviceMap() {
@@ -56,7 +58,7 @@ public class DeviceManager implements IDeviceManager {
 
     public String getDeviceName(String key, String targetCollection) {
         for (Map.Entry<String, Map<String, Device>> entry : this.getDeviceMap().entrySet()) {
-            if (entry.getKey() == targetCollection) {
+            if (entry.getKey().equalsIgnoreCase(targetCollection) && entry.getValue().containsKey(key)) {
                 return entry.getValue().get(key).getDeviceName();
             }
         }

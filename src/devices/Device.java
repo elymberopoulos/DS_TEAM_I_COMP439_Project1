@@ -16,15 +16,12 @@ public class Device implements IDevice {
     public Timer getTimer(){
         return timer;
     }
+
     public boolean checkTimer(){
         if(this.getTimer().isRunning()){
             return true;
         }
         return false;
-    }
-
-    public void startTimer(){
-        timer.run();
     }
 
     public String getDeviceName() {

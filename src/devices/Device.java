@@ -51,4 +51,5 @@ public class Device implements IDevice {
     public String showState() {
         return null;
     }
+
 }

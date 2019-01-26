@@ -42,10 +42,6 @@ public class Timer implements ITimer {
         this.time = time * 1000;
     }
 
-    public int completeTask() {
-        return 0;
-    }
-
     public void run() {
         this.running = true;
         System.out.println("Schedule wait STARTED at: " + new Date());
@@ -74,39 +70,4 @@ public class Timer implements ITimer {
             e.printStackTrace();
         }
     }
-
-
-
-//    public boolean timerAlarm(){
-//        if(this.getTime() == 0){
-//            return true;
-//        }
-//        return false;
-//    }
-
-//    public int completeTask() {
-//        if(this.getTime() == 0){
-//            System.out.println("NO TIMER VALUE");
-//            return 0;
-//        }
-//        this.running = true;
-//        return this.getTime();
-//    }
-//
-//    public void run() {
-//        try{
-//            System.out.println("Device timer started at:" + new Date());
-//            int time = this.completeTask();
-//            Thread.sleep(time);
-//            this.setTime(0);
-//            this.running = false;
-//            System.out.println("Device timer finished at:" + new Date());
-//        } catch (InterruptedException e){
-//            e.printStackTrace();
-//        }
-//
-//    }
-
-
-
 }

@@ -9,7 +9,7 @@ import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DeviceTest {
+public class DeviceTest {
 
     @Test
     void setPowerSwitch() {
@@ -76,6 +76,6 @@ class DeviceTest {
     }
 
     @Test
-    void showState() {
+    void showState() { //already tested with is on, tested running thread
     }
 }

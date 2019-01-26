@@ -8,7 +8,7 @@ import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DeviceManagerTest {
+public class DeviceManagerTest {
 
     @Test
     void addDevice() {

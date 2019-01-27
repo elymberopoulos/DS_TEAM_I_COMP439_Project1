@@ -33,7 +33,7 @@ public class DeviceManager implements IDeviceManager {
         System.out.println("\t\t\t\t<<<<<<<< CURRENT DEVICES >>>>>>>>>");
         System.out.println("______________________________________________________________________");
         for (String key : this.getDeviceMap().keySet()) {
-            System.out.println("CATEGORY: " + "'" + key + "'" + ": " + this.getDeviceMap().get(key));
+            System.out.println("COLLECTION: " + "'" + key + "'" + ": " + this.getDeviceMap().get(key));
         }
         System.out.println("----------------------------------------------------------------------");
 
@@ -83,14 +83,6 @@ public class DeviceManager implements IDeviceManager {
                 }
             }
         return null;
-    }
-
-    public void updateDevice(String updateKey, String newName, String targetCollection) {
-        for (Map.Entry<String, TreeMap<String, Device>> entry : this.getDeviceMap().entrySet()) {
-            if (entry.getKey().equalsIgnoreCase(targetCollection) && entry.getValue().containsKey(updateKey)) {
-                entry.getValue().get(updateKey).setDeviceName(newName);
-            }
-        }
     }
 
     public void moveDevice(String moveKey, String targetCollection, String destinationCollection) {

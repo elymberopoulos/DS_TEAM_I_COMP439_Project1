@@ -22,4 +22,11 @@ public class SmartLight extends Device implements ISmartLight {
     public int getBrightness() {
         return brightness;
     }
+
+    public void setPowerSwitch(){
+        super.setPowerSwitch();
+        if(!super.isDeviceOn()){
+            this.brightness = 0;
+        }
+    }
 }

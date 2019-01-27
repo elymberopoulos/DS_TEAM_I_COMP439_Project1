@@ -34,6 +34,7 @@ public class Main {
 
                 case "add device":
                     try {
+                        deviceManager.showDevices();
                         System.out.println("What type of device?\n\t < 'smart light' >\n\t < 'smart power strip' >");
                         String input = scanner.nextLine().toLowerCase();
                         if (input.contentEquals("smart light")) {
@@ -92,17 +93,18 @@ public class Main {
                                 System.out.println("Invalid device type");
                                 break;
                             }
-                            System.out.println("The devices power is currently " + manageDevice.isDeviceOn() + " switch power? [y/n]:");
+                            System.out.println("The devices power is currently " + manageDevice.isDeviceOn() + " with a brightness of " + ((SmartLight) manageDevice).getBrightness() + " switch power? [y/n]:");
                             if (scanner.nextLine().equalsIgnoreCase("y")) {
                                 manageDevice.setPowerSwitch();
                                 System.out.println("The devices power is now " + manageDevice.isDeviceOn() + ".");
                             }
+                            System.out.println("Device power must be true to adjust brightness.");
                             System.out.println("Would you like to adjust the brightness? [y/n]");
-                            if (scanner.nextLine().equalsIgnoreCase("y")) {
+                            if (scanner.nextLine().equalsIgnoreCase("y") && ((SmartLight) manageDevice).isDeviceOn()) {
                                 System.out.print("Select a value from 0 - 10:");
                                 int brightness = Integer.parseInt(scanner.nextLine().toLowerCase());
                                 ((SmartLight) manageDevice).setBrightness(brightness);
-                                System.out.println("The devices power is now " + manageDevice.isDeviceOn() + ".");
+                                System.out.println("The devices brightness is now " + ((SmartLight) manageDevice).getBrightness() + ".");
                             }
                         }
                         ////////////////////////////POWER STRIP SECTION/////////////////////////////////////////

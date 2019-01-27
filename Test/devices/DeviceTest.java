@@ -39,21 +39,29 @@ public class DeviceTest {
     void checkTimer() { // checks if timer is running
         Device d = new Device();
         Timer timer = d.getTimer();
-        timer.setTime(2);
+        timer.setTime(1);
         Thread thread = new Thread(timer);
 
         assertFalse(d.getTimer().isRunning());
         thread.start();
-        Thread t = new Thread();
+        Thread delay = new Thread();
 
         try { // delay so that run method has time to change timer boolean value of running
-            t.run();
-            t.sleep(50);
-            t.join();
+            delay.run();
+            delay.sleep(100);
+            delay.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         assertTrue(d.getTimer().isRunning());
+        try { // delay so that run method has time to change timer boolean value of running
+            delay.run();
+            delay.sleep(1500);
+            delay.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        assertFalse(d.getTimer().isRunning());
     }
 
     @Test

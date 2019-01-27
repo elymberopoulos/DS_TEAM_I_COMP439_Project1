@@ -1,4 +1,4 @@
-package testSuite;
+package runAllTests;
 
 import deviceManager.DeviceManagerTest;
 import devices.DeviceTest;

@@ -22,4 +22,12 @@ public class SmartLightTest {
         sl.setBrightness(3);
         assertEquals(3, sl.getBrightness());
     }
+
+    @Test
+    void setPowerSwitch() {
+        SmartLight sl = new SmartLight();
+        assertFalse(sl.isDeviceOn());
+        sl.setPowerSwitch();
+        assertTrue(sl.isDeviceOn());
+    }
 }

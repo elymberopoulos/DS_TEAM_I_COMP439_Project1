@@ -41,7 +41,7 @@ public class DeviceManager implements IDeviceManager {
     public void showDevicesWithState(){
         int formatCounter = 0;
         for(Map.Entry<String, TreeMap<String, Device>> key: this.getDeviceMap().entrySet()){
-            System.out.print("COLLECTION: '" + key.getKey() + "'\n");
+            System.out.print("\nCOLLECTION: '" + key.getKey() + "'\n");
             for (Map.Entry<String, Device> collectionKey: key.getValue().entrySet()) {
                 System.out.print(" <><> Key: '" + collectionKey.getKey() + "' Device Power State: " + collectionKey.getValue().isDeviceOn());
                 if (collectionKey.getValue() instanceof SmartLight){

@@ -118,6 +118,72 @@ COLLECTION: 'power strips': {}
 ----------------------------------------------------------------------
 This option allows for the moving of a device from its original collection to a new collection.
 What is the original collection name:
+What is the key name of the device to be moved:
+Enter destination collection name:
+```
+# Manage Device:
+```
+manage device
+Available options:
+set light power, set power strip power
+```
+# Set Timer:
+```
+set timer
+<<<<<	 ENTER DEVICE INFORMATION	>>>>>>
+	DEVICE KEY: 
+	DEVICE COLLECTION NAME: 
+Please enter a timer time in seconds.
+60
+Type 'help' if needed.
+Schedule wait STARTED at: Mon Jan 28 11:32:50 CST 2019
+Schedule wait ENDED at: Mon Jan 28 11:32:50 CST 2019
+Device timer started at:Mon Jan 28 11:32:50 CST 2019
+```
+# Set Schedule:
+```
+set schedule
+<<<<<	 ENTER DEVICE INFORMATION	>>>>>>
+	DEVICE KEY: 
+	DEVICE COLLECTION NAME: 
+Please enter a timer time in seconds.
+60
+Next input options are for a setting a schedule.
+Start in how many HOURS: 6
+Start in how many MINUTES: 60
+Type 'help' if needed.
+Schedule wait STARTED at: Mon Jan 28 11:36:50 CST 2019
+```
+# Show Devices:
+```
+show devices
+				<<<<<<<< CURRENT DEVICES >>>>>>>>>
+______________________________________________________________________
+COLLECTION: 'lights': {123=devices.SmartLight@6e0be858}
+COLLECTION: 'power strips': {}
+----------------------------------------------------------------------
+```
+# Show Devices With State:
+```
+show devices with state
+COLLECTION: 'lights'
+ <><> Key: '123' Device Power State: falseSmart Light Brightness level: 0COLLECTION: 'power strips'
+```
+# CLS:
+```
+"Clears the Screen"
+```
+# Help:
+```
+help
+			 << This is the help menu >>
+VALID COMMANDS:
+	add device, remove device, move device, manage device
+	set timer, set schedule, show devices, show devices with state, cls, help, exit
+```
+# Exit:
+```
+"Exits the program"
 ```
 
 

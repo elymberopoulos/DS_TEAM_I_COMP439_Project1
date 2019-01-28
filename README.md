@@ -50,8 +50,18 @@ Detailed Information
    void getDeviceName() {
    (this will give you the name of the device that is running)
     
-    
-    
+
+Directory structure -
+
+Device Manager - this is the directory for the management of devices.
+
+Device - this directory holds the devices that are used or when created.  for instance the light and the power strip that are already in there.
+
+RunAllTests -  this directory holds all the information for all the tests that are ran.
+
+TimerTest - this directory holds all the information with regards to time stamps
+
+
  
  
  

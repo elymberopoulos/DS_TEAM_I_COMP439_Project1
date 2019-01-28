@@ -20,8 +20,9 @@
  understandings how the internet works and what we can do with it.
 
 -----------------------------------------------------------------------------------------------------------------------------
-## Directions
+## Directions:
 Dependencies: Java 1.8, Junit 5
+
 Directions: In Intellij run the main file in the src directory/package and the program should start up in the IDE's run terminal.
 The tests for the project are in the test directory/package. Right click on the directory and click run tests with coverage for detailed
 results on test coverage.

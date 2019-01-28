@@ -1,12 +1,27 @@
 package devices;
+import timer.Timer;
+import java.util.Date;
+import java.util.Scanner;
 
-public class Device implements IDevice, Runnable {
+public class Device implements IDevice {
     private String deviceName;
     private boolean powerSwitch;
+    private Timer timer;
 
-    public Device(String deviceName){
-        this.deviceName = deviceName;
+    public Device(){
+        this.deviceName = null;
         this.powerSwitch = false;
+        this.timer = new Timer(0 , this);
+    }
+    public Timer getTimer(){
+        return timer;
+    }
+
+    public boolean checkTimer(){
+        if(this.getTimer().isRunning()){
+            return true;
+        }
+        return false;
     }
 
     public String getDeviceName() {
@@ -17,28 +32,21 @@ public class Device implements IDevice, Runnable {
         this.deviceName = deviceName;
     }
 
-    public boolean powerSwitch() {
-        return powerSwitch;
-    }
-
     public void setPowerSwitch() {
         if(this.powerSwitch == true){
             this.powerSwitch = false;
         }
         else{
-            System.out.println("Device already off.");
+            this.powerSwitch = true;
         }
     }
 
-    public void run() {
-
-    }
-
     public boolean isDeviceOn() {
-        return this.powerSwitch();
+        return powerSwitch;
     }
 
     public String showState() {
         return null;
     }
+
 }

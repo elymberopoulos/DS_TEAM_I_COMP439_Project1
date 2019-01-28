@@ -22,7 +22,8 @@
 -----------------------------------------------------------------------------------------------------------------------------
 
 
-## Detailed Information - The following are current tests that are implemented into the application.  All of these tests
+## Detailed Information: 
+The following are current tests that are implemented into the application.  All of these tests
 are used for getting detailed information from the devices that are being tested.  
 
 
@@ -71,14 +72,54 @@ The structure is simple.
 
 -----------------------------------------------------------------------------------------------------------------------------
 
-Setting Up Implementations for Testing-
+## Setting Up Implementations for Testing-
 set up the testing locally as root to avoid problems. 
 
 
 
 
-How to Use-
+## Examples of usage:
 When running the application.  The user will see a command prompt with 'help
+```
+Type 'help' if needed.
+help
+<< This is the help menu >>
+VALID COMMANDS:
+	add device, remove device, move device, manage device
+	set timer, set schedule, show devices, show devices with state, cls, help, exit
+```
+
+# Add Device:
+```
+add device
+				<<<<<<<< CURRENT DEVICES >>>>>>>>>
+______________________________________________________________________
+COLLECTION: 'lights': {}
+COLLECTION: 'power strips': {}
+----------------------------------------------------------------------
+What type of device?
+	 < 'smart light' >
+	 < 'smart power strip' >
+```
+
+# Remove Device:
+```
+remove device
+	Enter key of device to remove:
+```
+
+# Move Device:
+```
+move device
+				<<<<<<<< CURRENT DEVICES >>>>>>>>>
+______________________________________________________________________
+COLLECTION: 'lights': {}
+COLLECTION: 'power strips': {}
+----------------------------------------------------------------------
+This option allows for the moving of a device from its original collection to a new collection.
+What is the original collection name:
+```
+
 
 
 

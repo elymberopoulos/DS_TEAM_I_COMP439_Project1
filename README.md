@@ -20,8 +20,6 @@
  understandings how the internet works and what we can do with it.
 
 -----------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------
 
 
 Detailed Information - The following are current tests that are implemented into the application.  All of these tests
@@ -58,8 +56,7 @@ are used for getting detailed information from the devices that are being tested
    (this will give you the name of the device that is running)
     
 -----------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------
+
 
 Directory structure -  This section goes into a little bit detail with regards to what they actually are and what information they hold.
 The structure is simple.
@@ -73,8 +70,8 @@ RunAllTests -  this directory holds all the information for all the tests that a
 TimerTest - this directory holds all the information with regards to time stamps
 
 -----------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------
+
+
 
 
 

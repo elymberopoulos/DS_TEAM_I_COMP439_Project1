@@ -36,7 +36,28 @@ public class DeviceManager implements IDeviceManager {
             System.out.println("COLLECTION: " + "'" + key + "'" + ": " + this.getDeviceMap().get(key));
         }
         System.out.println("----------------------------------------------------------------------");
+    }
 
+    public void showDevicesWithState(){
+        int formatCounter = 0;
+        for(Map.Entry<String, TreeMap<String, Device>> key: this.getDeviceMap().entrySet()){
+            System.out.print("COLLECTION: '" + key.getKey() + "'\n");
+            for (Map.Entry<String, Device> collectionKey: key.getValue().entrySet()) {
+                System.out.print(" <><> Key: '" + collectionKey.getKey() + "' Device Power State: " + collectionKey.getValue().isDeviceOn());
+                if (collectionKey.getValue() instanceof SmartLight){
+                    System.out.print("Smart Light Brightness level: " + ((SmartLight) collectionKey.getValue()).getBrightness());
+                }
+                if (collectionKey.getValue() instanceof SmartPowerStrip){
+                    System.out.print(" Power Strip");
+                }
+                formatCounter++;
+                if(formatCounter == 2){
+                    System.out.print("\n");
+                    formatCounter = 0;
+                }
+            }
+        }
+        System.out.print("\n");
     }
 
     public void addDevice(String newKey, Device device, String targetCollection) {

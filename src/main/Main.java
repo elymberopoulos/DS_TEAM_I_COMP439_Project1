@@ -211,6 +211,9 @@ public class Main {
                 case "show device":
                     deviceManager.showDevices();
                     break;
+                case "show devices with state":
+                    deviceManager.showDevicesWithState();
+                    break;
                 case "cls":
                     ui.cls();
                     break;

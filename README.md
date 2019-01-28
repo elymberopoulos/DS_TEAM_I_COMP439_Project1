@@ -72,6 +72,7 @@ The structure is simple.
 -----------------------------------------------------------------------------------------------------------------------------
 
 Setting Up Implementations for Testing-
+set up the testing locally as root to avoid problems. 
 
 
 

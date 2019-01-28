@@ -19,7 +19,11 @@
  Another great aspect is that the data that will be collected could be extremely valuable to people.  It could give us better
  understandings how the internet works and what we can do with it.
 
-Detailed Information
+
+
+Detailed Information - The following are current tests that are implemented into the application.  All of these tests
+are used for getting detailed information from the devices that are being tested.  
+
 
    @Test
    void setPowerSwitch() {
@@ -51,7 +55,8 @@ Detailed Information
    (this will give you the name of the device that is running)
     
 
-Directory structure -
+Directory structure -  This section goes into a little bit detail with regards to what they actually are and what information they hold.
+The structure is simple.
 
 Device Manager - this is the directory for the management of devices.
 

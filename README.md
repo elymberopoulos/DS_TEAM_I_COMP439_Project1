@@ -10,7 +10,7 @@
  and creating smart instances, or implementing a timer for automatic power on 
  and power off.  
  
- ##What is IOT:
+ ## What is IOT:
  IOT is a technology that enables devices to connect via the internet.  As it is called
  the Internet Of Things.  This will include pretty much any device that can be on the net.
  The purpose of this technology is to make the device "aware".  It also gives the user unparalleled 
@@ -22,7 +22,7 @@
 -----------------------------------------------------------------------------------------------------------------------------
 
 
-Detailed Information - The following are current tests that are implemented into the application.  All of these tests
+## Detailed Information - The following are current tests that are implemented into the application.  All of these tests
 are used for getting detailed information from the devices that are being tested.  
 
 

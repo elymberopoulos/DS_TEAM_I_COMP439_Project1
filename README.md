@@ -10,7 +10,7 @@
  and creating smart instances, or implementing a timer for automatic power on 
  and power off.  
  
- What is IOT:
+ ##What is IOT:
  IOT is a technology that enables devices to connect via the internet.  As it is called
  the Internet Of Things.  This will include pretty much any device that can be on the net.
  The purpose of this technology is to make the device "aware".  It also gives the user unparalleled 
@@ -78,10 +78,7 @@ set up the testing locally as root to avoid problems.
 
 
 How to Use-
-
-
-
-Final Thoughts-
+When running the application.  The user will see a command prompt with 'help
 
 
 

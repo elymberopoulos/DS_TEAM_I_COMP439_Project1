@@ -61,15 +61,31 @@ are used for getting detailed information from the devices that are being tested
 Directory structure -  This section goes into a little bit detail with regards to what they actually are and what information they hold.
 The structure is simple.
 
-Device Manager - this is the directory for the management of devices.
+"Device Manager" - this is the directory for the management of devices.
 
-Device - this directory holds the devices that are used or when created.  for instance the light and the power strip that are already in there.
+"Device" - this directory holds the devices that are used or when created.  for instance the light and the power strip that are already in there.
 
-RunAllTests -  this directory holds all the information for all the tests that are ran.
+"RunAllTests" -  this directory holds all the information for all the tests that are ran.
 
-TimerTest - this directory holds all the information with regards to time stamps
+"TimerTest" - this directory holds all the information with regards to time stamps
 
 -----------------------------------------------------------------------------------------------------------------------------
+
+Setting Up Implementations for Testing-
+
+
+
+
+How to Use-
+
+
+
+Final Thoughts-
+
+
+
+
+
 
 
 

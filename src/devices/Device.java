@@ -45,8 +45,4 @@ public class Device implements IDevice {
         return powerSwitch;
     }
 
-    public String showState() {
-        return null;
-    }
-
 }

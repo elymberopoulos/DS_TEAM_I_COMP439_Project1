@@ -21,13 +21,13 @@
 
 Detailed Information
 
-Test
-    void setPowerSwitch() {
-    (this is used to either enable the switch to on or off)
+   @Test
+   void setPowerSwitch() {
+   (this is used to either enable the switch to on or off)
     
    @Test
-    void isDeviceOn() {
-    (this tests to see if the device is either on or off)
+   void isDeviceOn() {
+   (this tests to see if the device is either on or off)
     
    @Test
    void getTimer() {
@@ -39,15 +39,16 @@ Test
    (this checks to make sure that time is running)
    
    @Test
-    void setDeviceName() {
-    (this allows you to set a name for the device)
+   void setDeviceName() {
+   (this allows you to set a name for the device)
     
    @Test
    void showState()
    (this shows the state of the device)
+   
    @Test
-    void getDeviceName() {
-    (this will give you the name of the device that is running)
+   void getDeviceName() {
+   (this will give you the name of the device that is running)
     
     
     
